@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio – Yusufboyev Bilolbek</title>
+<style>
+  :root{
+    --bg:#f2f7f6; --card:#ffffff; --ink:#10262e; --muted:#4d6670;
+    --turq:#0f8a8c; --deep:#12384a; --ochre:#c98a2b; --line:#d3e2e0;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#0d1c22; --card:#14272f; --ink:#e8f1f0; --muted:#9db6bb; --line:#244049; --deep:#0a141a; }
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:70px}
+  body{font-family:"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65}
+  h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.2}
+  a{color:var(--turq)}
+  :focus-visible{outline:3px solid var(--ochre);outline-offset:2px}
+
+  /* Menyu */
+  header.nav{position:sticky;top:0;z-index:10;background:var(--deep);color:#fff;
+    display:flex;align-items:center;justify-content:space-between;padding:12px 5%}
+  header.nav .brand{font-family:Georgia,serif;font-size:1.1rem}
+  nav ul{display:flex;gap:22px;list-style:none}
+  nav a{color:#dcebea;text-decoration:none;font-size:.95rem}
+  nav a:hover{color:#fff;text-decoration:underline}
+  #menuBtn{display:none;background:none;border:1px solid #6f9aa3;color:#fff;padding:6px 12px;border-radius:6px;font-size:1rem}
+
+  /* Asosiy qism */
+  .hero{background:var(--deep);color:#fff;padding:56px 5% 72px;
+    background-image:radial-gradient(circle at 85% 20%,rgba(15,138,140,.55),transparent 45%)}
+  .hero-inner{max-width:1000px;margin:auto;display:flex;gap:40px;align-items:center;flex-wrap:wrap}
+  .photo{width:210px;height:210px;border-radius:50%;border:5px solid var(--ochre);
+    object-fit:cover;background:#2b5666;flex-shrink:0}
+  .hero h1{font-size:clamp(2rem,5vw,3.2rem);margin-bottom:14px}
+  .facts{list-style:none;display:grid;gap:8px;font-size:1.05rem}
+  .facts b{display:inline-block;min-width:110px;color:#9fd8d8;font-weight:600}
+  .hero .btn{display:inline-block;margin-top:22px;background:var(--ochre);color:#1a1205;
+    padding:11px 22px;border-radius:8px;text-decoration:none;font-weight:600}
+
+  /* Bo'limlar */
+  section{max-width:1000px;margin:auto;padding:60px 5% 10px}
+  h2{font-size:1.9rem;margin-bottom:8px}
+  .sub{color:var(--muted);margin-bottom:26px}
+  .grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:22px}
+  .card h3{font-size:1.15rem;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:.97rem}
+  .year{display:inline-block;color:var(--ochre);font-weight:700;margin-bottom:6px}
+
+  /* Yutuqlar – vaqt chizig'i */
+  .timeline{border-left:3px solid var(--turq);padding-left:22px;display:grid;gap:22px}
+  .timeline .item h3{font-size:1.1rem}
+  .timeline .item p{color:var(--muted)}
+
+  /* Loyihalar */
+  .project a.go{display:inline-block;margin-top:14px;background:var(--turq);color:#fff;
+    padding:9px 16px;border-radius:7px;text-decoration:none;font-weight:600}
+  .project a.go:hover{background:var(--deep)}
+
+  /* Dasturlar */
+  .tags{display:flex;flex-wrap:wrap;gap:10px}
+  .tags span{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--turq);
+    padding:8px 16px;border-radius:6px}
+
+  /* Koordinator va kamchiliklar */
+  .plan{display:grid;gap:14px;list-style:none}
+  .plan li{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 20px}
+  .plan li b{display:block;margin-bottom:2px}
+  .weak{border-left:5px solid var(--ochre)}
+
+  footer{margin-top:70px;background:var(--deep);color:#c9dcdd;text-align:center;padding:26px 5%}
+
+  @media (max-width:720px){
+    #menuBtn{display:block}
+    nav{position:absolute;top:100%;left:0;right:0;background:var(--deep);display:none;padding:10px 5% 18px}
+    nav.open{display:block}
+    nav ul{flex-direction:column;gap:12px}
+    .hero-inner{justify-content:center;text-align:center}
+    .facts b{display:block;min-width:0}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <span class="brand">Yusufboyev Bilolbek</span>
+  <button id="menuBtn" aria-label="Menyuni ochish">Menyu</button>
+  <nav id="mainNav">
+    <ul>
+      <li><a href="#bosh">Bosh sahifa</a></li>
+      <li><a href="#yutuqlar">Yutuqlarim</a></li>
+      <li><a href="#loyihalar">Loyihalarim</a></li>
+      <li><a href="#dasturlar">Dasturlarim</a></li>
+      <li><a href="#koordinator">IT koordinator</a></li>
+      <li><a href="#kamchiliklar">Kamchiliklarim</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ASOSIY MENYU: ism, familiya, yosh, rasm, yashash joyi -->
+<div class="hero" id="bosh">
+  <div class="hero-inner">
+    <!-- Rasmingizni "rasm.jpg" nomi bilan shu papkaga (index.html yoniga) qo'ying -->
+    <img class="photo" src="Gemini_Generated_Image_eo667ueo667ueo66.jfif" alt="Mening rasmim">
+    <div>
+      <h1>Ism Familya</h1>
+      <ul class="facts">
+        <li><b>Ism-familiya:</b> Yusufboyev Bilolbek</li>
+        <li><b>Yosh:</b> 13 yosh</li>
+        <li><b>Yashash joyi:</b> Xorazm viloyati, Shovot tumani</li>
+        <li><b>Yo'nalish:</b> Dasturchi</li>
+      </ul>
+      <a class="btn" href="#loyihalar">Loyihalarimni ko'rish</a>
+    </div>
+  </div>
+</div>
+
+
+  
+    </div>
+  </div>
+</section>
+
+<!-- LOYIHALARIM: 3 ta havola -->
+<section id="loyihalar">
+  <h2>Loyihalarim</h2>
+  <p class="sub">Har bir loyiha uchun alohida havola.</p>
+  <div class="grid">
+    <article class="card project">
+      <h3>1-loyiha nomi</h3>
+      <p>Bu saytimda shaharlarni yoki Davlatlarni xozirgi havo-haroratini ko'rsa bo'ladi.</p>
+      <a class="go" href="yssfbyvv.gthub.io/weather" target="_blank" rel="noopener">Loyihani ochish</a>
+    </article>
+    <article class="card project">
+      <h3>2-loyiha nomi</h3>
+      <p>Bu saytda 7-sinf fizika faniga doir mavzuni tushuntirish va testlar uchun yaratilgan.</p>
+      <a class="go" href="bilolbeko1.github.io/fizika3/" target="_blank" rel="noopener">Loyihani ochish</a>
+    </article>
+    <article class="card project">
+      <h3>3-loyiha nomi</h3>
+      <p>Bu sayta kunlik ishlarni yozib borsaning bo'ladi va shu vaqtni blgilaysiz va shu vaqtda budilnik chalinadi yoki kalkulyator o'rnida foydalansangiz bo'ladi va valyuta hisblash english tilidagi so'zlarni uzbek tilidaagi tarjimasini topish va musica saqlash va shu musicani kerakli vaqtda tinglasangiz bo'ladi</p>
+      <a class="go" href="yssfbyvv.github.io/dolist" target="_blank" rel="noopener">Loyihani ochish</a>
+    </article>
+  </div>
+</section>
+
+<!-- DASTURLARIM -->
+<section id="dasturlar">
+  <h2>Dasturlarim</h2>
+  <p class="sub">Bilgan dasturlash tillari va ishlata oladigan dasturlar.</p>
+  <div class="tags">
+    <span>HTML</span>
+    <span>CSS</span>
+    <span>JavaScript</span>
+    <span>VS Code</span>
+    <span>Git va GitHub</span>
+    <span>Microsoft Office</span>
+  </div>
+</section>
+
+<!-- XORAZMDA IT KOORDINATOR BO'LSAM -->
+<section id="koordinator">
+  <h2>Xorazm viloyatida IT koordinator bo'lsam</h2>
+  <p class="sub">Men quyidagi ishlarni amalga oshirgan bo'lardim.</p>
+  <ul class="plan">
+    <li><b>Maktab va kollejlarda IT to'garaklar ochish</b>
+      Har bir tumanda yoshlarga bepul dasturlash darslarini tashkil qilish.</li>
+    <li><b>Viloyat bo'yicha IT xaritasini tuzish</b>
+      Qaysi tumanda kompyuter, internet va o'qituvchi yetishmayotganini aniqlash va ro'yxatga olish.</li>
+    <li><b>Yosh dasturchilar uchun hackathon va tanlovlar</b>
+      Xiva, Urganch va boshqa tumanlarda yillik musobaqalar o'tkazish, g'oliblarni mentorlarga ulash.</li>
+    <li><b>Turizm uchun raqamli yechimlar</b>
+      Xiva kabi tarixiy joylar uchun mobil ilova, QR-gidlar va ko'p tilli sayt yaratishga yordam berish.</li>
+    <li><b>Davlat xizmatlarini raqamlashtirish</b>
+      Tuman hokimliklari va maktablarda onlayn xizmatlardan foydalanishni o'rgatish.</li>
+    <li><b>Mentorlik va ish bilan ta'minlash</b>
+      Tajribali dasturchilarni yoshlar bilan bog'lash, stajirovka va masofaviy ish imkoniyatlarini topish.</li>
+    <li><b>Natijani o'lchash</b>
+      Har chorakda hisobot: nechta o'quvchi o'qidi, nechta loyiha yaratildi, nechtasi ishga joylashdi.</li>
+  </ul>
+</section>
+
+<!-- KAMCHILIKLARIM -->
+<section id="kamchiliklar">
+  <h2>Kamchiliklarim</h2>
+  
+      .</li>
+    <li class="weak"><b>kamchilikim</b>
+      Kamchilikim shuki men uzim to'liq kod yoza olmayman chunki kod yozishni bilmayman men suniy intellektdan to'g'ri foydalangan xolda sayt va dasturlar yarata olaman .</li>
+  </ul>
+</section>
+
+<footer>
+  <p>© <span id="yil"></span> Yusufboyev Bilolbek – Xorazm viloyati</p>
+</footer>
+
+<script>
+  // Telefonda menyuni ochish/yopish
+  const btn = document.getElementById("menuBtn");
+  const nav = document.getElementById("mainNav");
+  btn.addEventListener("click", () => nav.classList.toggle("open"));
+  nav.addEventListener("click", e => { if (e.target.tagName === "A") nav.classList.remove("open"); });
+
+  // Pastdagi yilni avtomatik qo'yish
+  document.getElementById("yil").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
